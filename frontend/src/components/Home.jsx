@@ -41,9 +41,14 @@ const Home = () => {
           AI-powered tools for detecting brain tumors from MRI images and
           predicting lung cancer from CT scan images.
         </p>
-        <button className="mt-8 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-semibold rounded-full shadow-lg hover:scale-105 transition duration-300">
-          Get Started's
-        </button>
+     <a
+          href="https://mri-tumour-detector-10.onrender.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-block rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-8 py-3 text-lg font-semibold text-white shadow-lg transition duration-300 hover:scale-105"
+        >
+          Get Started
+        </a>
       </header>
     </div>
   );
