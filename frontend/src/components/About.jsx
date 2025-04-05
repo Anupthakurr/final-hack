@@ -27,21 +27,23 @@ const About = () => {
           className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent"
           custom={1}
           variants={fadeInUp}
-          
         >
           About Our AI-Powered Medical Assistant
         </motion.h2>
 
-        <motion.p className="text-lg text-gray-300" custom={2} variants={fadeInUp}>
+        <motion.p
+          className="text-lg text-gray-300"
+          custom={2}
+          variants={fadeInUp}
+        >
           This web application leverages deep learning to assist in early
           diagnosis of
-          <span className="text-pink-400 font-medium"> brain tumors</span> and
-          <span className="text-purple-400 font-medium"> chest diseases</span>{" "}
-          using medical scans (MRI and CT). Our goal is to provide fast,
-          reliable, and accessible tools to support healthcare professionals.
+          <span className="text-pink-400 font-medium"> brain tumors</span> using
+          medical scans (MRI). Our goal is to provide fast, reliable, and
+          accessible tools to support healthcare professionals.
         </motion.p>
 
-        <div className="grid md:grid-cols-2 gap-8 mt-10 text-left">
+        <div className="grid md:grid-cols-1 gap-8 mt-10 text-left">
           <motion.div
             className="bg-black/30 rounded-xl p-6 shadow-lg border border-pink-500 hover:scale-[1.02] transition duration-300"
             custom={3}
@@ -56,25 +58,11 @@ const About = () => {
               architecture.
             </p>
           </motion.div>
-
-          <motion.div
-            className="bg-black/30 rounded-xl p-6 shadow-lg border border-purple-500 hover:scale-[1.02] transition duration-300"
-            custom={4}
-            variants={fadeInUp}
-          >
-            <h3 className="text-xl font-semibold text-purple-400 mb-2">
-              Chest Disease Prediction
-            </h3>
-            <p className="text-gray-400">
-              Using CT scan images, the AI detects lung abnormalities to assist
-              in identifying conditions such as lung cancer.
-            </p>
-          </motion.div>
         </div>
 
         <motion.div
           className="mt-10 text-left space-y-4"
-          custom={5}
+          custom={4}
           variants={fadeInUp}
         >
           <h3 className="text-2xl font-semibold text-gradient bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -89,7 +77,7 @@ const About = () => {
             <li>
               <span className="text-white font-medium">Custom Training:</span>{" "}
               Fine-tuned using a labeled dataset from Kaggle to adapt VGG16 to
-              MRI and CT image analysis tasks.
+              MRI image analysis tasks.
             </li>
             <li>
               <span className="text-white font-medium">Performance:</span>{" "}
@@ -101,7 +89,7 @@ const About = () => {
 
         <motion.p
           className="mt-10 text-sm text-gray-500"
-          custom={6}
+          custom={5}
           variants={fadeInUp}
         >
           ⚠ This application is intended for educational and research purposes
