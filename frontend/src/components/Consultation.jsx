@@ -1,16 +1,26 @@
-
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Calendar, Clock } from "lucide-react";
 
-const Prediction = () => {
+const doctors = [
+  { name: "Dr. Michael Chen", img: "https://randomuser.me/api/portraits/men/32.jpg" },
+  { name: "Dr. Sarah Lee", img: "https://randomuser.me/api/portraits/women/45.jpg" },
+  { name: "Dr. John Patel", img: "https://randomuser.me/api/portraits/men/53.jpg" },
+  { name: "Dr. Emily Wang", img: "https://randomuser.me/api/portraits/women/67.jpg" },
+];
+
+const Consultation = () => {
+  const [hovered, setHovered] = useState(null);
+
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4 py-10">
-      <div className="max-w-2xl w-full bg-gray-800 rounded-xl shadow-xl p-8">
+      <div className="max-w-2xl w-full bg-gray-800 rounded-xl shadow-xl p-8 relative">
         {/* Header */}
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold text-white">Book A Consultation</h2>
-          <p className="text-gray-400 mt-2">Connect with our experienced doctors for personalized care</p>
+          <p className="text-gray-400 mt-2">
+            Connect with our experienced doctors for personalized care
+          </p>+
         </div>
 
         {/* Form */}
@@ -81,9 +91,32 @@ const Prediction = () => {
             Book Consultation
           </button>
         </form>
+
+        {/* Doctor Avatars */}
+        <div className="flex justify-center mt-8 -space-x-6">
+          {doctors.map((doc, index) => (
+            <div
+              key={index}
+              onMouseEnter={() => setHovered(index)}
+              onMouseLeave={() => setHovered(null)}
+              className="relative z-10 hover:z-20 transition-transform hover:scale-110 cursor-pointer"
+            >
+              <img
+                src={doc.img}
+                alt={doc.name}
+                className="w-14 h-14 rounded-full border-2 border-white shadow-md"
+              />
+              {hovered === index && (
+                <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm px-3 py-1 rounded-lg shadow-md whitespace-nowrap">
+                  {doc.name}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
-export default Prediction;
+export default Consultation;
