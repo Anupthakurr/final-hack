@@ -1,3 +1,9 @@
+import express, { urlencoded } from 'express'
+import dotenv from 'dotenv'
+import userRoutes from '../src/routes/user.routes.js'
+import { errorHandler, notFound } from './middlewares/error.middleware.js';
+import cors from 'cors'
+const app =express();
 dotenv.config();
 app.use(cors({
     origin: 'http://localhost:5173', // Your Vite dev server
