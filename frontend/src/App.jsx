@@ -9,6 +9,7 @@ import Home from './components/Home'
 import SignIn from './components/SignIn'
 import ChatBot from './components/ChatBot'
 import Consultation from './components/Consultation'
+import About from './components/About'
 
 function App() {
  
@@ -19,6 +20,7 @@ function App() {
  <Route path='/' Component={Home}/>
   <Route  path ='/sign-up' Component={SignUp} />
   <Route  path ='/sign-in' Component={SignIn} />
+  <Route  path ='/about' Component={About} />
   <Route  path ='/consultation' Component={Consultation} />
   <Route  path ='/chatBot' Component={ChatBot} />
 

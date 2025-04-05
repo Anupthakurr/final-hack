@@ -1,7 +1,12 @@
 import React from "react";
 import Spline from "@splinetool/react-spline";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+const AboutPage =()=>{
+navigate('/about')
+}
   return (
     <div className="relative w-full h-screen overflow-hidden bg-gradient-to-b from-black to-[#0b0b0b]">
       {/* Navigation Bar */}
@@ -26,9 +31,9 @@ const Header = () => {
           <li className="cursor-pointer transition duration-300 hover:text-pink-500">
             Lung Cancer Predictor
           </li>
-          <li className="cursor-pointer transition duration-300 hover:text-pink-500">
+          <button onClick={AboutPage} className="cursor-pointer transition duration-300 hover:text-pink-500">
             About
-          </li>
+          </button>
         </ul>
       </nav>
 
