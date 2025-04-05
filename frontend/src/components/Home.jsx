@@ -42,7 +42,7 @@ const Home = () => {
           predicting lung cancer from CT scan images.
         </p>
         <button className="mt-8 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-semibold rounded-full shadow-lg hover:scale-105 transition duration-300">
-          Get Started
+          Get Started's
         </button>
       </header>
     </div>
