@@ -10,6 +10,8 @@ import SignIn from './components/SignIn'
 import ChatBot from './components/ChatBot'
 import Consultation from './components/Consultation'
 import About from './components/About'
+import HealthDashboard from './components/HealthDashboard'
+import HealthForm from './components/HealthForem'
 
 function App() {
  
@@ -23,7 +25,8 @@ function App() {
   <Route  path ='/about' Component={About} />
   <Route  path ='/consultation' Component={Consultation} />
   <Route  path ='/chatBot' Component={ChatBot} />
-
+  <Route  path ='/dashboard' Component={HealthDashboard} />
+  <Route  path ='/prediction' Component={HealthForm} />
 
     </Routes>
     </>
