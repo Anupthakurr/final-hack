@@ -1,5 +1,5 @@
 
-import User from '../models/userModel.js'
+import User from '../models/user.model.js'
 import uploadOnCloudinary from "../utils/cloudinary.js";
 const registerUser = async (req, res, next) => {
   const { name, password, email } = req.body;
