@@ -6,7 +6,7 @@ import cors from 'cors'
 const app =express();
 dotenv.config();
 app.use(cors({
-    origin: ' http://localhost:5184', // Your Vite dev server
+    origin: process.env.CORS_ORIGIN, // Your Vite dev server
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
   }))
