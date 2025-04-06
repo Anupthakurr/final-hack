@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
   const signUp =location.pathname==='/sign-up'
   
   return (
-    <div className="flex">
+    <div className="flex ">
       {!isHomePage&&!signUp && <Sidebar />}
       <div className={!isHomePage ? "ml-64 bg-gray-900 flex-1" : "flex-1"}>
         {children}

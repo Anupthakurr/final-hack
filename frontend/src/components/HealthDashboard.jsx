@@ -47,7 +47,7 @@ const HealthDashboard = () => {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-gray-800 p-3 rounded-lg shadow-lg border border-gray-700">
+        <div className="bg-gray-800 p-3 rounded-lg shadow-lg border border-gray-700 ">
           <p className="text-gray-300">{new Date(label).toLocaleTimeString()}</p>
           {payload.map((pld, index) => (
             <p key={index} className="text-white font-semibold">
