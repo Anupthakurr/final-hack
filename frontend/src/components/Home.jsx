@@ -21,10 +21,10 @@ const Header = () => {
         </div>
         <ul className="flex space-x-6 text-white text-sm sm:text-base items-center">
           <li
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/dashboard")}
             className="cursor-pointer transition duration-300 hover:text-pink-500"
           >
-            Home
+           Dashboard
           </li>
           <li className="transition duration-300 hover:text-pink-500">
             <a

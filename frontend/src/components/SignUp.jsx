@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
- 
   const [image, setImage] = useState(null);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
+  
   const handleLogin = () => {
-    console.log('Navigate to login');
-    // Add your navigation logic here
+    navigate('sign-in');
   };
 
   const submitHandler = async (e) => {
@@ -23,11 +23,12 @@ const SignUp = () => {
     setLoading(true);
     
     // Validate inputs
-    if (!name || !email || !password || !image) {  // Ensure image is provided
+    if (!name || !email || !password || !image) {
       setError("Please fill in all required fields including an image.");
       setLoading(false);
       return;
     }
+    
     // Create FormData for mixed data (file + text)
     const formData = new FormData();
     
@@ -35,7 +36,6 @@ const SignUp = () => {
     formData.append('name', name);
     formData.append('email', email);
     formData.append('password', password);
-    
     
     // Append file - using 'image' as the field name to match backend
     if (image) {
@@ -53,12 +53,18 @@ const SignUp = () => {
         }
       );
       
-      setSuccess("Account created successfully!");
-      console.log("Registration successful:", response.data);
-      
-      // You could redirect to login page here or directly log the user in
-      // e.g., localStorage.setItem('token', response.data.token);
-      
+      // Store the token in localStorage
+      if (response.data && response.data.token) {
+        localStorage.setItem("token", response.data.token);
+        setSuccess("Account created successfully!");
+        console.log("Registration successful:", response.data);
+        
+        
+        navigate('/dashboard');
+      } else {
+    
+        setError("Registration successful but couldn't retrieve authentication token.");
+      }
     } catch (error) {
       console.error("Registration error:", error);
       setError(error.response?.data?.message || "Registration failed. Please try again.");
@@ -116,8 +122,6 @@ const SignUp = () => {
                   required
                 />
               </div>
-              
-             
               
               <div>
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">

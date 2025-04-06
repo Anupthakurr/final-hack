@@ -1,5 +1,5 @@
 
-import User from '../models/user.model.js'
+import User from "../models/user.model.js";
 import uploadOnCloudinary from "../utils/cloudinary.js";
 const registerUser = async (req, res, next) => {
   const { name, password, email } = req.body;
@@ -90,7 +90,77 @@ const keyWord =req.query
 
 }
 
+// Get user profile for the currently authenticated user
+const getUserProfile = async (req, res) => {
+    try {
+      // req.user should be set by the protect middleware
+      const userId = req.user._id;
+      
+      const userProfile = await User.findById(userId).select("-password");
+      
+      if (!userProfile) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      
+      res.status(200).json({
+        success: true,
+        user: userProfile
+      });
+    } catch (error) {
+      console.error("Error fetching user profile:", error);
+      res.status(500).json({ 
+        success: false,
+        message: "Failed to fetch user profile" 
+      });
+    }
+  };
+  
+  // Update user profile
+  const updateUserProfile = async (req, res) => {
+    try {
+      const userId = req.user._id;
+      const { name, email } = req.body;
+      
+      const updates = {
+        name,
+        email
+      };
+      
+      // Handle image upload if present
+      if (req.file) {
+        const localFilePath = req.file.path;
+        const uploadResult = await uploadOnCloudinary(localFilePath);
+        
+        if (uploadResult && uploadResult.url) {
+          updates.image = uploadResult.url;
+        }
+      }
+      
+      const updatedUser = await User.findByIdAndUpdate(
+        userId,
+        { $set: updates },
+        { new: true }
+      ).select("-password");
+      
+      if (!updatedUser) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      
+      res.status(200).json({
+        success: true,
+        user: updatedUser,
+        message: "Profile updated successfully"
+      });
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      res.status(500).json({
+        success: false,
+        message: "Failed to update profile"
+      });
+    }
+  };
+  
 
 
 export  {registerUser ,
-loginUser}
+loginUser,  getUserProfile, updateUserProfile }
